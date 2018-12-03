@@ -134,7 +134,7 @@ public class Package {
      */
     public String shippingLabel() {
     	String label = "====================" +
-                "\nTO: " + this.destination +
+                "\n" + this.destination.toString() +
                 "\nWeight: " + this.weight +
                 "\nPrice: " + this.price +
                 "\nProduct: " + this.product +

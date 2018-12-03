@@ -60,8 +60,8 @@ public class CargoPlane extends Vehicle {
         for (int i = 0; i < getPackages().size(); i++) {
             profit += getPackages().get(i).getPrice();
         }
-        int maxRange = Math.abs(Integer.parseInt(getPackages().get(getPackages().size() - 1).getDestination()) - 1);
-        profit -= maxRange * GAS_RATE;
+        //int maxRange = Math.abs(Integer.parseInt(getPackages().get(getPackages().size() - 1).getDestination()) - 1);
+        //profit -= maxRange * GAS_RATE;
 
         return profit;
     } //getProfit

@@ -51,8 +51,8 @@ public class Truck extends Vehicle {
         for (int i = 0; i < getPackages().size(); i++) {
             profit += getPackages().get(i).getPrice();
         }
-        int maxRange = getPackages().get(getPackages().size() - 1).getDestination()
-        profit -= maxRange * GAS_RATE;
+        //int maxRange = getPackages().get(getPackages().size() - 1).getDestination()
+        //profit -= maxRange * GAS_RATE;
 
     	return profit;
     } //getProfit

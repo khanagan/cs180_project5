@@ -63,4 +63,10 @@ public class ShippingAddress {
     public void setZipCode(int zipCode) {
         this.zipCode = zipCode;
     }
+
+    public String toString() {
+        return "TO: " + this.name +
+                "\n" + this.address +
+                "\n" + this.city + ", " + this.state + ", " + this.zipCode + "\n";
+    }
 } //class

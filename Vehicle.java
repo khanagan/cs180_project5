@@ -227,8 +227,17 @@ public class Vehicle implements Profitable {
         //TODO
     }
 
-    
 
+    @Override
+    public String report() {
+        return null;
+        //will be overridden in subclasses of Vehicle, so not implemented here
+    }
 
+    @Override
+    public double getProfit() {
+        return 0;
+        //will be overridden in subclasses of Vehicle, so not implemented here
 
+    }
 }
