@@ -162,8 +162,7 @@ public class Vehicle implements Profitable {
      * @return whether or not it was successful in adding the package
      */
     public boolean addPackage(Package pkg) {
-        // TODO check this next line
-        if (currentWeight + pkg.getWeight() <= maxWeight) {
+        if (this.currentWeight + pkg.getWeight() <= maxWeight) {
             packages.add(pkg);
             currentWeight += pkg.getWeight();
             return true;
@@ -182,6 +181,7 @@ public class Vehicle implements Profitable {
      */
     public void empty() {
         for (int i = 0; i < packages.size(); i++) {
+            currentWeight = 0;
             packages.remove(i);
         }
     }
@@ -199,6 +199,11 @@ public class Vehicle implements Profitable {
      */
     public boolean isFull() {
         //TODO
+        if (this.currentWeight == maxWeight) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     
@@ -208,7 +213,7 @@ public class Vehicle implements Profitable {
     
     /**
      * Fills vehicle with packages with preference of date added and range of its
-     * destination zip code. It will iterate over the packages intially at a range
+     * destination zip code. It will iterate over the packages initially at a range
      * of zero and fill it with as many as it can within its range without going
      * over its maximum weight. The amount the range increases is dependent on the
      * vehicle that is using this. This range it increases by after each iteration

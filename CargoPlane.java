@@ -4,16 +4,15 @@ import java.util.ArrayList;
 /**
  * <h1>CargoPlane</h1> Represents a Cargo Plane
  */
-public class CargoPlane extends Vehicle {
+public class CargoPlane extends Vehicle implements Profitable{
     final double GAS_RATE = 2.33;
 
     /**
      * Default Constructor
      */
     //============================================================================
-    //TODO
-//    public CargoPlane() {
-//        super();
+    public CargoPlane() {
+        super();
     } //default constructor
     
     //============================================================================
@@ -25,7 +24,9 @@ public class CargoPlane extends Vehicle {
      * @param maxWeight    maximum weight that the vehicle can hold
      */
     //============================================================================
-    //TODO
+    public CargoPlane(String licensePlate, double maxWeight) {
+        super(licensePlate, maxWeight);
+    } //constructor
     
     //============================================================================
 
@@ -37,9 +38,9 @@ public class CargoPlane extends Vehicle {
      */
     @Override
     public void fill(ArrayList<Package> warehousePackages) {
-    	//TODO
-        
-    }
+        //TODO
+
+    } //fill
 
     /*
      * =============================================================================
@@ -55,9 +56,16 @@ public class CargoPlane extends Vehicle {
      */
     @Override
     public double getProfit() {
-    	//TODO
-        
-    }
+        //TODO - fix max range
+        double profit = 0;
+        for (int i = 0; i < getPackages().size(); i++) {
+            profit += getPackages().get(i).getPrice();
+        }
+        int maxRange = getPackages().get(getPackages().size() - 1).getDestination()
+        profit -= maxRange * GAS_RATE;
+
+        return profit;
+    } //getProfit
 
     /**
      * Generates a String of the Cargo Plane report. Cargo plane report includes:
@@ -73,10 +81,23 @@ public class CargoPlane extends Vehicle {
      */
     @Override
     public String report() {
-    	//TODO
+        String report = "==========Cargo Plane Report==========" +
+                "\nLicense Plate No.: " + this.getLicensePlate() +
+                "\nDestination: " + this.getZipDest() +
+                "\nWeight Load: "+ this.getCurrentWeight() + "/" + this.getMaxWeight() +
+                "\nNet Profit: " + this.getProfit() +
+                "\n=====Shipping Labels=====";
+        for (int i = 0; i < this.getPackages().size(); i++) {
+            report += "\n====================" +
+                    "\nTO: " + this.getPackages().get(i).shippingLabel() +
+                    "\nWeight: " + this.getPackages().get(i).getWeight() +
+                    "\nPrice: " + this.getPackages().get(i).getPrice() +
+                    "\nProduct: " + this.getPackages().get(i).getProduct() +
+                    "\n====================";
+        } //for
+        report += "==============================\n";
+        return report;
        
-    }
-
+    } //report
    
-   
-}
+} //class
