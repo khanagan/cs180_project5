@@ -1,12 +1,9 @@
 import java.util.ArrayList;
 
-
-
-
 /**
  * <h1>CargoPlane</h1> Represents a Cargo Plane
  */
-public class CargoPlane extends Vehicle implements Profitable{
+public class CargoPlane extends Vehicle {
     final double GAS_RATE = 2.33;
 
     /**
@@ -63,7 +60,7 @@ public class CargoPlane extends Vehicle implements Profitable{
         for (int i = 0; i < getPackages().size(); i++) {
             profit += getPackages().get(i).getPrice();
         }
-        int maxRange = getPackages().get(getPackages().size() - 1).getDestination()
+        int maxRange = Math.abs(Integer.parseInt(getPackages().get(getPackages().size() - 1).getDestination()) - 1);
         profit -= maxRange * GAS_RATE;
 
         return profit;
@@ -88,14 +85,9 @@ public class CargoPlane extends Vehicle implements Profitable{
                 "\nDestination: " + this.getZipDest() +
                 "\nWeight Load: "+ this.getCurrentWeight() + "/" + this.getMaxWeight() +
                 "\nNet Profit: " + this.getProfit() +
-                "\n=====Shipping Labels=====";
+                "\n=====Shipping Labels=====\n";
         for (int i = 0; i < this.getPackages().size(); i++) {
-            report += "\n====================" +
-                    "\nTO: " + this.getPackages().get(i).shippingLabel() +
-                    "\nWeight: " + this.getPackages().get(i).getWeight() +
-                    "\nPrice: " + this.getPackages().get(i).getPrice() +
-                    "\nProduct: " + this.getPackages().get(i).getProduct() +
-                    "\n====================";
+            report += this.getPackages().get(i).shippingLabel();
         } //for
         report += "==============================\n";
         return report;

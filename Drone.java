@@ -6,7 +6,7 @@ import java.util.ArrayList;
  * <h1>Drone</h1> Represents a Drone
  */
 
-public class Drone extends Vehicle implements Profitable {
+public class Drone extends Vehicle {
 
     final private double GAS_RATE = 1.33;
     /**
@@ -75,14 +75,9 @@ public class Drone extends Vehicle implements Profitable {
                 "\nDestination: " + this.getZipDest() +
                 "\nWeight Load: "+ this.getCurrentWeight() + "/" + this.getMaxWeight() +
                 "\nNet Profit: " + this.getProfit() +
-                "\n=====Shipping Labels=====";
+                "\n=====Shipping Labels=====\n";
         for (int i = 0; i < this.getPackages().size(); i++) {
-            report += "\n====================" +
-                    "\nTO: " + this.getPackages().get(i).shippingLabel() +
-                    "\nWeight: " + this.getPackages().get(i).getWeight() +
-                    "\nPrice: " + this.getPackages().get(i).getPrice() +
-                    "\nProduct: " + tthis.getPackages().get(i).getProduct() +
-                    "\n====================";
+            report += this.getPackages().get(i).shippingLabel();
         } //for
         report += "==============================\n";
         return report;

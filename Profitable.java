@@ -7,5 +7,7 @@
 public interface Profitable {
 	
 	//TODO
+    String report();
+    double getProfit();
 
 }
