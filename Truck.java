@@ -2,6 +2,7 @@ import java.util.ArrayList;
 
 
 
+
 /**
  * <h1>Truck</h1> Represents a Truck
  */
