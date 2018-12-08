@@ -32,6 +32,7 @@ public class DatabaseManager {
 
             String string = bufferedReader.readLine();
 
+            // TODO : need to specify type of vehicle?
             while (string != null) {
                 parameters = string.split(",");
                 Vehicle v = new Vehicle(parameters[1], Double.parseDouble(parameters[2]));
