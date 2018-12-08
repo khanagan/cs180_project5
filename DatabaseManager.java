@@ -1,5 +1,6 @@
 import java.io.File;
 import java.io.*;
+import java.sql.BatchUpdateException;
 import java.util.ArrayList;
 
 /**
@@ -49,7 +50,7 @@ public class DatabaseManager {
         }
 
         return list;
-    }
+    } //loadVehicles
 
 
     /**
@@ -102,7 +103,7 @@ public class DatabaseManager {
         }
 
         return list;
-    }
+    } //loadPackages
 
 
     /**
@@ -137,7 +138,7 @@ public class DatabaseManager {
 
 
         return profit;
-    }
+    } //loadProfit
 
 
     /**
@@ -166,7 +167,7 @@ public class DatabaseManager {
         }
 
         return numberOfPackages;
-    }
+    } //loadPackagesShipped
 
 
     /**
@@ -199,7 +200,7 @@ public class DatabaseManager {
         }
 
         return primeDay;
-    }
+    } //loadPrimeDay
 
 
     /**
@@ -215,8 +216,24 @@ public class DatabaseManager {
      * @param vehicles ArrayList of vehicles to save to file
      */
     public static void saveVehicles(File file, ArrayList<Vehicle> vehicles) {
+        try {
+            FileWriter fw = new FileWriter(file);
+            BufferedWriter bw = new BufferedWriter(fw);
 
-    }
+            for (int i = 0; i < vehicles.size(); i++) {
+                if (vehicles.get(i).getClass().equals("class Drone")) {
+                    bw.write("Drone," + vehicles.get(i).getLicensePlate() + "," + vehicles.get(i).getMaxWeight() + "\n");
+                } else if (vehicles.get(i).getClass().equals("class Truck")) {
+                    bw.write("Truck," + vehicles.get(i).getLicensePlate() + "," + vehicles.get(i).getMaxWeight() + "\n");
+                } else if (vehicles.get(i).getClass().equals("class CargoPlane")) {
+                    bw.write("Cargo Plane," + vehicles.get(i).getLicensePlate() + "," + vehicles.get(i).getMaxWeight() + "\n");
+                }
+            } //for
+            bw.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    } //saveVehicles
 
 
     /**
@@ -238,8 +255,26 @@ public class DatabaseManager {
      * @param packages ArrayList of packages to save to file
      */
     public static void savePackages(File file, ArrayList<Package> packages) {
-        //TODO
-    }
+        try {
+            FileWriter fw = new FileWriter(file);
+            BufferedWriter bw = new BufferedWriter(fw);
+
+            for (int i = 0; i < packages.size(); i++) {
+                bw.write(packages.get(i).getID() + ","
+                        + packages.get(i).getProduct() + ","
+                        + packages.get(i).getWeight() + ","
+                        + packages.get(i).getPrice() + ","
+                        + packages.get(i).getDestination().getName() + ","
+                        + packages.get(i).getDestination().getAddress() + ","
+                        + packages.get(i).getDestination().getCity() + ","
+                        + packages.get(i).getDestination().getState() + ","
+                        + packages.get(i).getDestination().getZipCode() + "\n");
+            } //for
+            bw.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    } //savePackages
 
 
     /**
@@ -250,8 +285,16 @@ public class DatabaseManager {
      */
 
     public static void saveProfit(File file, double profit) {
-        //TODO
-    }
+        try {
+            FileWriter fw = new FileWriter(file);
+            BufferedWriter bw = new BufferedWriter(fw);
+
+            bw.write(profit + "\n");
+            bw.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    } //saveProfit
 
 
     /**
@@ -262,19 +305,40 @@ public class DatabaseManager {
      */
 
     public static void savePackagesShipped(File file, int nPackages) {
-        //TODO
-    }
+        try {
+            FileWriter fw = new FileWriter(file);
+            BufferedWriter bw = new BufferedWriter(fw);
+
+            bw.write(nPackages + "\n");
+            bw.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    } //savePackageShipped
 
 
     /**
      * Saves status of prime day to text file. If it is primeDay "1" will be
-     * writtern, otherwise "0" will be written.
+     * written, otherwise "0" will be written.
      *
      * @param file     File to write profits to
      * @param primeDay Whether or not it is Prime Day
      */
 
     public static void savePrimeDay(File file, boolean primeDay) {
-        //TODO
-    }
-}
+        try {
+            FileWriter fw = new FileWriter(file);
+            BufferedWriter bw = new BufferedWriter(fw);
+            if (primeDay) {
+                bw.write("1\n");
+            } else {
+                bw.write("0\n");
+            }
+            bw.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    } //savePrimeDay
+
+
+} //class
