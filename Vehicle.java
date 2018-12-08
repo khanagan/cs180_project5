@@ -225,7 +225,19 @@ public class Vehicle implements Profitable {
      */
     public void fill(ArrayList<Package> warehousePackages) {
         //TODO
-    }
+        while(!isFull() && warehousePackages.size() != 0) {
+            int currentRange = 0;
+            for (int i = 0; i < warehousePackages.size(); i++) {
+                int range = Math.abs(warehousePackages.get(i).getDestination().getZipCode() - this.getZipDest());
+                if (range == currentRange) {
+                    packages.add(warehousePackages.get(i));
+                    warehousePackages.remove(i);
+                    i--;
+                }
+            } //for (loops through warehousePackages
+            currentRange++;
+        } //while
+    } //fill
 
 
     @Override
