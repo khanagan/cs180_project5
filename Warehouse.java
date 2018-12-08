@@ -55,7 +55,7 @@ public class Warehouse {
         Scanner scanner = new Scanner(System.in);
         int choice1 = scanner.nextInt();
         switch (choice1) {
-            case 1:
+            case 1: //add package
                 System.out.println("Enter Package ID:");
                 String id = scanner.nextLine();
                 System.out.println("Enter Product Name:");
@@ -83,7 +83,7 @@ public class Warehouse {
                 System.out.println(p.shippingLabel());
 
                 break;
-            case 2:
+            case 2: //add vehicle
                 System.out.println("Vehicle Options\n1) Truck\n2) Drone\n3) Cargo Plane");
                 int vType = scanner.nextInt();
                 scanner.nextLine();
@@ -102,7 +102,7 @@ public class Warehouse {
                 }
 
                 break;
-            case 3:
+            case 3: //primeDay
                 if (isPrimeDay) {
                     isPrimeDay = false;
                     for (int i = 0; i < packages.size(); i++) {
@@ -116,23 +116,53 @@ public class Warehouse {
                 }
 
                 break;
-            case 4:
+            case 4: //send vehicle
                 //TODO
+
+                //error: no vehicles available
+                //error: no packages available
+
+                //get vehicle type
+                System.out.println("Options:\n" +
+                        "1) Send Truck\n" +
+                        "2) Send Drone\n" +
+                        "3) Send Cargo Plane\n" +
+                        "4) Send First Available");
+                int vChoice = scanner.nextInt();
+                scanner.nextLine();
+                //error: no vehicles of selected type are available
+
+                //decide zip code
+                System.out.println("ZIP Code Options:\n" +
+                        "1) Send to first ZIP Code\n" +
+                        "2) Send to mode of ZIP Code");
+                //send to first zip code
+                //send to the mode of zip codes
+                //fill vehicle
+                //vehicle report
+                //add to statistics
+
+
                 break;
-            case 5:
-                //TODO
+            case 5: //print statistics
+                //TODO - format profit, find variable of packages in warehouse, is numOfPackages right for packages shipped?
+                System.out.println("==========Statistics==========" +
+                        "\nProfits:                   " + profit +
+                        "\nPackages Shipped:          " + numOfPackages +
+                        "\nPackages in Warehouse      " +
+                        "\n==============================");
                 break;
-            case 6:
+            case 6: //exit
                 //TODO
+                //save: packages, vehicles, profits, num of packages, prime day to corresponding files
                 break;
             default:
                 System.out.println("Error: Option not available.");
                 break;
-        } //switch
+        } //big switch :)
 
 
-
-        //TODO
+        //TODO - ALL OF PART 3
         //3) save data (vehicle, packages, profits, packages shipped and primeDay) to files (overwriting them) using DatabaseManager
     	
     
