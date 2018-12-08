@@ -46,13 +46,12 @@ public class Truck extends Vehicle {
      */
     @Override
     public double getProfit() {
-        // TODO - fix maxRange
         double profit = 0;
         for (int i = 0; i < getPackages().size(); i++) {
             profit += getPackages().get(i).getPrice();
         }
-        //int maxRange = getPackages().get(getPackages().size() - 1).getDestination()
-        //profit -= maxRange * GAS_RATE;
+        int maxRange = Math.abs(getPackages().get(getPackages().size() - 1).getDestination().getZipCode() - this.getZipDest());
+        profit -= maxRange * GAS_RATE;
 
     	return profit;
     } //getProfit
