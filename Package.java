@@ -138,7 +138,7 @@ public class Package {
                 "\nWeight: " + this.weight +
                 "\nPrice: " + this.price +
                 "\nProduct: " + this.product +
-                "\n====================\n";
+                "\n====================";
     	return label;
     } //shippingLabel
 
