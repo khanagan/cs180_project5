@@ -10,7 +10,9 @@
  */
 import java.io.File;
 import java.io.*;
+import java.text.NumberFormat;
 import java.util.ArrayList;
+import java.util.Locale;
 
 /**
  * <h1>Database Manager</h1>
@@ -36,6 +38,10 @@ public class DatabaseManager {
         System.out.println("loadVehicles");
         ArrayList<Vehicle> list = new ArrayList<>();
         String[] parameters;
+
+        if (!file.exists()) {
+            return list;
+        }
 
         try {
             FileReader fileReader = new FileReader(file);
@@ -91,10 +97,14 @@ public class DatabaseManager {
      * @return ArrayList of packages
      */
     public static ArrayList<Package> loadPackages(File file) {
+
         System.out.println("loadPackages");
+
         ArrayList<Package> list = new ArrayList<>();
         String[] parameters;
-
+        if (!file.exists()) {
+            return list;
+        }
         try {
             FileReader fileReader = new FileReader(file);
             BufferedReader bufferedReader = new BufferedReader(fileReader);
@@ -132,6 +142,9 @@ public class DatabaseManager {
      * @return profits from file
      */
     public static double loadProfit(File file) {
+        if (!file.exists()) {
+            return 0;
+        }
         System.out.println("loadProfit");
         double profit = 0.0;
         if (!file.exists()) {
@@ -168,6 +181,9 @@ public class DatabaseManager {
      * @return number of packages shipped from file
      */
     public static int loadPackagesShipped(File file) {
+        if (!file.exists()) {
+            return 0;
+        }
         int numberOfPackages = 0;
         try {
             FileReader fileReader = new FileReader(file);
@@ -197,6 +213,9 @@ public class DatabaseManager {
      * @return whether or not it is prime day
      */
     public static boolean loadPrimeDay(File file) {
+        if (!file.exists()) {
+            return false;
+        }
         System.out.println("loadPrimeDay");
         boolean primeDay = false;
         try {
@@ -242,11 +261,11 @@ public class DatabaseManager {
             BufferedWriter bw = new BufferedWriter(fw);
 
             for (int i = 0; i < vehicles.size(); i++) {
-                if (vehicles.get(i).getClass().equals("class Drone")) {
+                if (vehicles.get(i) instanceof Drone) {
                     bw.write("Drone," + vehicles.get(i).getLicensePlate() + "," + vehicles.get(i).getMaxWeight() + "\n");
-                } else if (vehicles.get(i).getClass().equals("class Truck")) {
+                } else if (vehicles.get(i) instanceof Truck) {
                     bw.write("Truck," + vehicles.get(i).getLicensePlate() + "," + vehicles.get(i).getMaxWeight() + "\n");
-                } else if (vehicles.get(i).getClass().equals("class CargoPlane")) {
+                } else if (vehicles.get(i) instanceof CargoPlane) {
                     bw.write("Cargo Plane," + vehicles.get(i).getLicensePlate() + "," + vehicles.get(i).getMaxWeight() + "\n");
                 }
             } //for
@@ -311,8 +330,9 @@ public class DatabaseManager {
         try {
             FileWriter fw = new FileWriter(file);
             BufferedWriter bw = new BufferedWriter(fw);
-
-            bw.write(profit + "\n");
+            NumberFormat nf = NumberFormat.getCurrencyInstance(Locale.US);
+            String prof = nf.format(profit);
+            bw.write(prof + "\n");
             bw.close();
         } catch (IOException e) {
             e.printStackTrace();

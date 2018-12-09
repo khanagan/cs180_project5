@@ -82,7 +82,13 @@ public class Drone extends Vehicle {
     @Override
     public String report() {
         NumberFormat nf = NumberFormat.getCurrencyInstance(Locale.US);
-        String prof = nf.format(getProfit());
+        String prof;
+        if (getProfit() < 0) {
+            prof = nf.format(getProfit());
+
+        } else {
+            prof ="(" + nf.format(getProfit()) + ")";
+        }
         String report = "==========Drone Report==========" +
                 "\nLicense Plate No.: " + this.getLicensePlate() +
                 "\nDestination: " + this.getZipDest() +
