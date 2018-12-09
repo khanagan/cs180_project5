@@ -1,4 +1,8 @@
+import java.text.NumberFormat;
 import java.util.ArrayList;
+import java.util.Locale;
+
+import static java.util.Locale.US;
 
 /**
  * Project 5
@@ -79,11 +83,13 @@ public class Truck extends Vehicle {
      */
     @Override
     public String report() {
+        NumberFormat nf = NumberFormat.getCurrencyInstance(Locale.US);
+        String prof = nf.format(getProfit());
         String report = "==========Truck Report==========" +
                 "\nLicense Plate No.: " + this.getLicensePlate() +
                 "\nDestination: " + this.getZipDest() +
                 "\nWeight Load: "+ this.getCurrentWeight() + "/" + this.getMaxWeight() +
-                "\nNet Profit: " + this.getProfit() +
+                "\nNet Profit: " + prof +
                 "\n=====Shipping Labels=====\n";
         for (int i = 0; i < this.getPackages().size(); i++) {
             report += this.getPackages().get(i).shippingLabel();

@@ -33,6 +33,7 @@ public class DatabaseManager {
      * @return ArrayList of vehicles
      */
     public static ArrayList<Vehicle> loadVehicles(File file) {
+        System.out.println("loadVehicles");
         ArrayList<Vehicle> list = new ArrayList<>();
         String[] parameters;
 
@@ -42,13 +43,19 @@ public class DatabaseManager {
 
             String string = bufferedReader.readLine();
 
-            // TODO : need to specify type of vehicle?
             while (string != null) {
                 parameters = string.split(",");
-                Vehicle v = new Vehicle(parameters[1], Double.parseDouble(parameters[2]));
+                Vehicle v = null;
+                if (parameters[0].equals("Truck")) {
+                    v = new Truck(parameters[1], Double.parseDouble(parameters[2]));
+                } else if (parameters[0].equals("Drone")) {
+                    v = new Drone(parameters[1], Double.parseDouble(parameters[2]));
+                } else if (parameters[0].equals("Cargo Plane")) {
+                    v = new CargoPlane(parameters[1], Double.parseDouble(parameters[2]));
+                }
                 list.add(v);
                 string = bufferedReader.readLine();
-            }
+            } //while
 
             bufferedReader.close();
             fileReader.close();
@@ -84,6 +91,7 @@ public class DatabaseManager {
      * @return ArrayList of packages
      */
     public static ArrayList<Package> loadPackages(File file) {
+        System.out.println("loadPackages");
         ArrayList<Package> list = new ArrayList<>();
         String[] parameters;
 
@@ -124,6 +132,7 @@ public class DatabaseManager {
      * @return profits from file
      */
     public static double loadProfit(File file) {
+        System.out.println("loadProfit");
         double profit = 0.0;
         if (!file.exists()) {
             return 0;
@@ -188,6 +197,7 @@ public class DatabaseManager {
      * @return whether or not it is prime day
      */
     public static boolean loadPrimeDay(File file) {
+        System.out.println("loadPrimeDay");
         boolean primeDay = false;
         try {
             FileReader fileReader = new FileReader(file);
@@ -226,6 +236,7 @@ public class DatabaseManager {
      * @param vehicles ArrayList of vehicles to save to file
      */
     public static void saveVehicles(File file, ArrayList<Vehicle> vehicles) {
+        System.out.println("saveVehicles");
         try {
             FileWriter fw = new FileWriter(file);
             BufferedWriter bw = new BufferedWriter(fw);
@@ -265,6 +276,7 @@ public class DatabaseManager {
      * @param packages ArrayList of packages to save to file
      */
     public static void savePackages(File file, ArrayList<Package> packages) {
+        System.out.println("savePackages");
         try {
             FileWriter fw = new FileWriter(file);
             BufferedWriter bw = new BufferedWriter(fw);
@@ -295,6 +307,7 @@ public class DatabaseManager {
      */
 
     public static void saveProfit(File file, double profit) {
+        System.out.println("saveProfits");
         try {
             FileWriter fw = new FileWriter(file);
             BufferedWriter bw = new BufferedWriter(fw);
@@ -315,6 +328,7 @@ public class DatabaseManager {
      */
 
     public static void savePackagesShipped(File file, int nPackages) {
+        System.out.println("savePackagesShipped");
         try {
             FileWriter fw = new FileWriter(file);
             BufferedWriter bw = new BufferedWriter(fw);
@@ -336,6 +350,7 @@ public class DatabaseManager {
      */
 
     public static void savePrimeDay(File file, boolean primeDay) {
+        System.out.println("savePrimeDay");
         try {
             FileWriter fw = new FileWriter(file);
             BufferedWriter bw = new BufferedWriter(fw);
@@ -349,6 +364,5 @@ public class DatabaseManager {
             e.printStackTrace();
         }
     } //savePrimeDay
-
 
 } //class
