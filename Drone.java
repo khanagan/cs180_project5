@@ -1,6 +1,15 @@
 import java.util.ArrayList;
 
-
+/**
+ * Project 5
+ *
+ * Drone class, subclass of Vehicle
+ *
+ * @author Kathryn Hanagan, Shruti Srinivasan, section 11
+ *
+ * @version 12/08/18
+ *
+ */
 
 /**
  * <h1>Drone</h1> Represents a Drone

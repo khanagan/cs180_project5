@@ -1,4 +1,15 @@
 /**
+ * Project 5
+ *
+ * Package class
+ *
+ * @author Kathryn Hanagan, Shruti Srinivasan, section 11
+ *
+ * @version 12/08/18
+ *
+ */
+
+/**
  * <h1>Package</h1> Represents a package
  */
 public class Package {

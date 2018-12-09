@@ -1,3 +1,13 @@
+/**
+ * Project 5
+ *
+ * DatabaseManager class
+ *
+ * @author Kathryn Hanagan, Shruti Srinivasan, section 11
+ *
+ * @version 12/08/18
+ *
+ */
 import java.io.File;
 import java.io.*;
 import java.util.ArrayList;

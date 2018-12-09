@@ -1,6 +1,15 @@
 import java.util.ArrayList;
 
-
+/**
+ * Project 5
+ *
+ * Truck object, subclass of Vehicle
+ *
+ * @author Kathryn Hanagan, Shruti Srinivasan, section 11
+ *
+ * @version 12/08/18
+ *
+ */
 
 
 /**

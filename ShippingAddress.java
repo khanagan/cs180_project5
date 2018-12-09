@@ -1,4 +1,15 @@
 /**
+ * Project 5
+ *
+ * ShippingAddress of Packages
+ *
+ * @author Kathryn Hanagan, Shruti Srinivasan, section 11
+ *
+ * @version 12/08/18
+ *
+ */
+
+/**
  * <h1>Shipping Address</h1> Represents a shipping address
  */
 public class ShippingAddress {

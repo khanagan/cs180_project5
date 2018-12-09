@@ -1,3 +1,13 @@
+/**
+ * Project 5
+ *
+ * Warehouse class
+ *
+ * @author Kathryn Hanagan, Shruti Srinivasan, section 11
+ *
+ * @version 12/08/18
+ *
+ */
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -79,6 +89,7 @@ public class Warehouse {
                 scanner.nextLine();
 
                 Package p = new Package(id, name, weight, price, new ShippingAddress(addressName, address, city, state, zip));
+                numOfPackages++;
                 System.out.println();
                 System.out.println(p.shippingLabel());
 
@@ -146,11 +157,7 @@ public class Warehouse {
                 break;
             case 5: //print statistics
                 //TODO - format profit, find variable of packages in warehouse, is numOfPackages right for packages shipped?
-                System.out.println("==========Statistics==========" +
-                        "\nProfits:                   " + profit +
-                        "\nPackages Shipped:          " + numOfPackages +
-                        "\nPackages in Warehouse      " +
-                        "\n==============================");
+                printStatisticsReport(profit, numOfPackages, packages.size());
                 break;
             case 6: //exit
                 //TODO
@@ -167,6 +174,14 @@ public class Warehouse {
     	
     
     } //main
+
+    public static void printStatisticsReport(double profit, int numOfPackages, int size) {
+        System.out.println("==========Statistics==========" +
+                "\nProfits:                   " + profit +
+                "\nPackages Shipped:          " + numOfPackages +
+                "\nPackages in Warehouse      " + size +
+                "\n==============================");
+    } //printStatisticsReport
 
 
 } //Warehouse class

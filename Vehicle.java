@@ -1,5 +1,15 @@
 import java.util.ArrayList;
 
+/**
+ * Project 5
+ *
+ * Vehicle class to carry and deliver Packages
+ *
+ * @author Kathryn Hanagan, Shruti Srinivasan, section 11
+ *
+ * @version 12/08/18
+ *
+ */
 
 
 /**
