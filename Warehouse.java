@@ -132,7 +132,6 @@ public class Warehouse {
 
                     break;
                 case 4: //send vehicle
-                    //TODO
 
                     //error handling:
                     if (vehicles.size() == 0) {
@@ -184,7 +183,6 @@ public class Warehouse {
                         if (!foundIt) {
                             System.out.println("Error: No vehicles of selected type are available.");
                         } else {
-                            // TODO - finish send to mode of zip codes
                             //decide zip code
                             System.out.println("ZIP Code Options:\n" +
                                     "1) Send to first ZIP Code\n" +
