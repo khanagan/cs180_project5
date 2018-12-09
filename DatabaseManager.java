@@ -330,9 +330,7 @@ public class DatabaseManager {
         try {
             FileWriter fw = new FileWriter(file);
             BufferedWriter bw = new BufferedWriter(fw);
-            NumberFormat nf = NumberFormat.getCurrencyInstance(Locale.US);
-            String prof = nf.format(profit);
-            bw.write(prof + "\n");
+            bw.write(profit + "\n");
             bw.close();
         } catch (IOException e) {
             e.printStackTrace();
