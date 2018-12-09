@@ -194,9 +194,9 @@ public class DatabaseManager {
             BufferedReader bufferedReader = new BufferedReader(fileReader);
 
             String line = bufferedReader.readLine();
-            if (line.equals(1)) {
+            if (line.equals("1")) {
                 primeDay = true;
-            } else if (line.equals(0)) {
+            } else if (line.equals("0")) {
                 primeDay = false;
             }
 
