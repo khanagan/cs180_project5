@@ -195,32 +195,64 @@ public class Warehouse {
                             if (zipChoice == 1) { //send to first zip code
                                 vehicles.get(index).setZipDest(packages.get(0).getDestination().getZipCode());
                                 vehicles.get(index).fill(packages);
-                                System.out.println(id + "has been added.");
+                                System.out.println(id + " has been added.");
                                 vehicles.get(index).report();
                                 vehicles.remove(vehicles.get(index));
                             } else if (zipChoice == 2) { //send to the mode of zip codes
-                                int highestCount = 1;
-                                int mode = packages.get(0).getDestination().getZipCode();
-                                int currentZip = mode;
-                                for (int i = 0; i < packages.size(); i++) {
-                                    int currentCount = 1;
-                                    for (int j = i + 1; j < packages.size(); j++) {
-                                        if (packages.get(i).equals(packages.get(j))) {
-                                            currentZip = packages.get(j).getDestination().getZipCode();
-                                            currentCount++;
-                                        }
 
-                                    } //for
-                                    if (currentCount > highestCount) {
-                                        highestCount++;
-                                        mode = currentZip;
+                                //loop through packages and count how many have the same zip
+                                int[] counts = new int[packages.size()];
+                                for (int i = 0; i < packages.size(); i++) {
+                                    int count = 1;
+                                    for (int j = i; j < packages.size(); j++) {
+                                        if (i != j && packages.get(i).getDestination().getZipCode() == packages.get(j).getDestination().getZipCode()) {
+                                            count++;
+                                        }
+                                    } //inside for loop
+                                    counts[i] = count;
+                                } //outside for loop
+
+                                //checks which count is the largest (which is the mode)
+                                int modeZip = 0;
+                                int highestCount = 0;
+                                for (int i = 0; i < counts.length; i++) {
+                                    if (counts[i] > highestCount) {
+                                        highestCount = counts[i];
+                                        modeZip = packages.get(i).getDestination().getZipCode();
                                     }
                                 } //for
-                                //TODO : remove vehicle
-                            }
-                            //fill vehicle
-                            //vehicle report
-                            //add to statistics
+
+                                vehicles.get(index).setZipDest(modeZip);
+                                vehicles.get(index).fill(packages);
+                                System.out.println(id + " has been added.");
+                                vehicles.get(index).report();
+                                vehicles.remove(vehicles.get(index));
+
+
+
+
+
+
+
+//                                int highestCount = 1;
+//                                int mode = packages.get(0).getDestination().getZipCode();
+//                                int currentZip = mode;
+//                                for (int i = 0; i < packages.size(); i++) {
+//                                    int currentCount = 1;
+//                                    for (int j = i + 1; j < packages.size(); j++) {
+//                                        if (packages.get(i).equals(packages.get(j))) {
+//                                            currentZip = packages.get(j).getDestination().getZipCode();
+//                                            currentCount++;
+//                                        }
+//
+//                                    } //for
+//                                    if (currentCount > highestCount) {
+//                                        highestCount++;
+//                                        mode = currentZip;
+//                                    }
+//                                } //for
+
+                            } //END - send to mode zip code
                         }
                     }
 
