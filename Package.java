@@ -152,8 +152,8 @@ public class Package {
     	String label = "====================" +
                 "\n" + this.destination.toString() +
                 "\nWeight: " + this.weight +
-                "\nPrice: " + newPrice +
-                "\nProduct:" + this.product +
+                "\nPrice:       " + newPrice +
+                "\nProduct:     " + this.product +
                 "\n====================";
     	return label;
     } //shippingLabel
