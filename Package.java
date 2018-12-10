@@ -9,6 +9,9 @@
  *
  */
 
+import java.text.NumberFormat;
+import java.util.Locale;
+
 /**
  * <h1>Package</h1> Represents a package
  */
@@ -144,11 +147,13 @@ public class Package {
      * @return The package's shipping label.
      */
     public String shippingLabel() {
+        NumberFormat nf = NumberFormat.getCurrencyInstance(Locale.US);
+        String newPrice = nf.format(price);
     	String label = "====================" +
                 "\n" + this.destination.toString() +
                 "\nWeight: " + this.weight +
-                "\nPrice: " + this.price +
-                "\nProduct: " + this.product +
+                "\nPrice: " + newPrice +
+                "\nProduct:" + this.product +
                 "\n====================";
     	return label;
     } //shippingLabel
