@@ -149,12 +149,12 @@ public class Package {
     public String shippingLabel() {
         NumberFormat nf = NumberFormat.getCurrencyInstance(Locale.US);
         String newPrice = nf.format(price);
-    	String label = "====================" +
+    	String label = String.format("====================" +
                 "\n" + this.destination.toString() +
-                "\nWeight: " + this.weight +
+                "\nWeight:      %.2f"  +
                 "\nPrice:       " + newPrice +
-                "\nProduct:     " + this.product +
-                "\n====================";
+                "\nProduct:" + this.product +
+                "\n====================", getWeight());
     	return label;
     } //shippingLabel
 
