@@ -35,7 +35,7 @@ public class DatabaseManager {
      * @return ArrayList of vehicles
      */
     public static ArrayList<Vehicle> loadVehicles(File file) {
-        System.out.println("loadVehicles");
+//        System.out.println("loadVehicles");
         ArrayList<Vehicle> list = new ArrayList<>();
         String[] parameters;
 
@@ -98,7 +98,7 @@ public class DatabaseManager {
      */
     public static ArrayList<Package> loadPackages(File file) {
 
-        System.out.println("loadPackages");
+//        System.out.println("loadPackages");
 
         ArrayList<Package> list = new ArrayList<>();
         String[] parameters;
@@ -145,7 +145,7 @@ public class DatabaseManager {
         if (!file.exists()) {
             return 0;
         }
-        System.out.println("loadProfit");
+//        System.out.println("loadProfit");
         double profit = 0.0;
         if (!file.exists()) {
             return 0;
@@ -216,7 +216,7 @@ public class DatabaseManager {
         if (!file.exists()) {
             return false;
         }
-        System.out.println("loadPrimeDay");
+//        System.out.println("loadPrimeDay");
         boolean primeDay = false;
         try {
             FileReader fileReader = new FileReader(file);
@@ -255,7 +255,7 @@ public class DatabaseManager {
      * @param vehicles ArrayList of vehicles to save to file
      */
     public static void saveVehicles(File file, ArrayList<Vehicle> vehicles) {
-        System.out.println("saveVehicles");
+//        System.out.println("saveVehicles");
         try {
             FileWriter fw = new FileWriter(file);
             BufferedWriter bw = new BufferedWriter(fw);
@@ -295,7 +295,7 @@ public class DatabaseManager {
      * @param packages ArrayList of packages to save to file
      */
     public static void savePackages(File file, ArrayList<Package> packages) {
-        System.out.println("savePackages");
+//        System.out.println("savePackages");
         try {
             FileWriter fw = new FileWriter(file);
             BufferedWriter bw = new BufferedWriter(fw);
@@ -326,7 +326,7 @@ public class DatabaseManager {
      */
 
     public static void saveProfit(File file, double profit) {
-        System.out.println("saveProfits");
+//        System.out.println("saveProfits");
         try {
             FileWriter fw = new FileWriter(file);
             BufferedWriter bw = new BufferedWriter(fw);
@@ -346,7 +346,7 @@ public class DatabaseManager {
      */
 
     public static void savePackagesShipped(File file, int nPackages) {
-        System.out.println("savePackagesShipped");
+//        System.out.println("savePackagesShipped");
         try {
             FileWriter fw = new FileWriter(file);
             BufferedWriter bw = new BufferedWriter(fw);
@@ -368,7 +368,7 @@ public class DatabaseManager {
      */
 
     public static void savePrimeDay(File file, boolean primeDay) {
-        System.out.println("savePrimeDay");
+//        System.out.println("savePrimeDay");
         try {
             FileWriter fw = new FileWriter(file);
             BufferedWriter bw = new BufferedWriter(fw);
